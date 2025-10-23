@@ -4,7 +4,7 @@ import Header from "../Header/Header";
 import ProductsGrid from "./ProductsGrid";
 import "../HomePage/HomePage.css";
 
-const HomePage = ({ cart }) => {
+const HomePage = ({ cart, loadCart }) => {
 
   const [products, setProducts] = useState([]);
 
@@ -24,7 +24,7 @@ const HomePage = ({ cart }) => {
       <Header cart={cart} />
 
       <div className="home-page">
-        <ProductsGrid products={products} />
+        <ProductsGrid products={products} loadCart={loadCart} />
       </div>
     </>
   );
