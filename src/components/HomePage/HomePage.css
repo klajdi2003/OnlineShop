@@ -126,6 +126,10 @@
   margin-right: 6px;
 }
 
+.home-page .added-to-cart-visible {
+  opacity: 1;
+}
+
 .home-page .add-to-cart-button {
   width: 100%;
   padding: 8px;
