@@ -1,13 +1,38 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import '../Header/Header.css';
 
 const Header = ({ cart = []}) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // Get search query from URL on mount or when location changes
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const query = params.get('search') || '';
+    setSearchQuery(query);
+  }, [location]);
 
   let totalQuantity = 0;
 
   cart.forEach((cartItem) => {
     totalQuantity += cartItem.quantity;
   });
+
+  const handleSearch = () => {
+    if (searchQuery.trim()) {
+      navigate(`/?search=${encodeURIComponent(searchQuery.trim())}`);
+    } else {
+      navigate('/');
+    }
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
   return (
     <>
     <div className="header">
@@ -22,8 +47,15 @@ const Header = ({ cart = []}) => {
       </div>
 
       <div className="middle-section">
-        <input className="search-bar" type="text" placeholder="Search" />
-        <button className="search-button">
+        <input 
+          className="search-bar" 
+          type="text" 
+          placeholder="Search" 
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          onKeyPress={handleKeyPress}
+        />
+        <button className="search-button" onClick={handleSearch}>
           <img
             className="search-icon"
             src="images/icons/search-icon.png"
