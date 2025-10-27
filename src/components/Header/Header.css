@@ -28,34 +28,82 @@
 .header .header-link {
   display: inline-block;
   padding: 6px 9.5px;
-  border-radius: 2px;
+  border-radius: 8px;
   cursor: pointer;
   text-decoration: none;
-  border: 1px solid rgba(0, 0, 0, 0);
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .header .header-link:hover {
-  border: 1px solid white;
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
-.header .logo {
+.header .header-link:active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.header .logo-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 15px;
+  transition: all 0.3s ease;
+}
+
+.header .shop-icon {
   height: 26px;
-  margin-top: 1px;
+  width: 26px;
 }
 
-.header .mobile-logo {
-  display: none;
+.header .logo-text {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  line-height: 1;
 }
 
-@media (max-width: 675px) {
-  .header .logo {
+.header .logo-online {
+  color: white;
+}
+
+.header .logo-shop {
+  color: rgb(0, 0, 0);
+  background-color: white;
+  padding: 2px 4px;
+  border-radius: 2px;
+  margin-left: 2px;
+}
+
+/* Mobile responsive logo */
+@media (max-width: 600px) {
+  .header .logo-container {
+    gap: 3px;
+    margin-left: 0;
+  }
+  
+  .header .shop-icon {
+    height: 22px;
+    width: 22px;
+  }
+  
+  .header .logo-text {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 475px) {
+  .header .logo-text {
     display: none;
   }
-
-  .header .mobile-logo {
-    display: block;
-    height: 26px;
-    margin-top: 1px;
+  
+  .header .logo-container {
+    gap: 0;
+  }
+  
+  .header .shop-icon {
+    height: 24px;
+    width: 24px;
   }
 }
 

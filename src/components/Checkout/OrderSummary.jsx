@@ -3,10 +3,17 @@ import dayjs from "dayjs";
 import { useState } from "react";
 import { formatMoney } from "../../utilities/money";
 import DeliveryOptions from "./DeliveryOptions";
+import EmptyCart from "./EmptyCart";
 
 const OrderSummary = ({ cart, deliveryOptions, loadCart }) => {
   const [editingQuantity, setEditingQuantity] = useState({});
   const [newQuantities, setNewQuantities] = useState({});
+
+  // Handle empty cart state
+  if (cart.length === 0) {
+    return <EmptyCart />;
+  }
+
   return (
     <>
     <div className="order-summary">

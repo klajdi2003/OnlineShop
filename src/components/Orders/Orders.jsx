@@ -5,7 +5,7 @@ import Header from "../Header/Header";
 import { formatMoney } from "../../utilities/money";
 import "../Orders/Orders.css";
 
-const Orders = ({ cart }) => {
+const Orders = ({ cart, loadCart }) => {
 
   const [orders, setOrders] = useState([]);
 
@@ -15,6 +15,18 @@ const Orders = ({ cart }) => {
         setOrders(response.data);
       })
   }, []);
+
+  const buyAgain = async (product, quantity) => {
+    try {
+      await axios.post('/api/cart-items', {
+        productId: product.id,
+        quantity: quantity
+      });
+      await loadCart();
+    } catch (error) {
+      console.error('Error adding product to cart:', error);
+    }
+  };
 
   return (
     <>
@@ -68,13 +80,16 @@ const Orders = ({ cart }) => {
                           <div className="product-quantity">
                             Quantity: {orderProduct.quantity}
                           </div>
-                          <button className="buy-again-button button-primary">
+                          <button 
+                            className="buy-again-button button-primary"
+                            onClick={() => buyAgain(orderProduct.product, orderProduct.quantity)}
+                          >
                             <img
                               className="buy-again-icon"
                               src="images/icons/buy-again.png"
                               alt="Buy Again"
                             />
-                            <span className="buy-again-message">Add to Cart</span>
+                            <span className="buy-again-message">Buy Again</span>
                           </button>
                         </div>
 

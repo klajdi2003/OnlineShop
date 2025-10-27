@@ -26,33 +26,71 @@
   width: 200px;
 }
 
-.checkout-header .logo {
+.checkout-header-link {
+  text-decoration: none;
+}
+
+.checkout-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: 5px;
+}
+
+.checkout-shop-icon {
   height: 26px;
-  margin-top: 0px;
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
-  display: block;
+  width: 26px;
+  flex-shrink: 0;
 }
 
-.checkout-header .mobile-logo {
-  display: none;
+.checkout-logo-text {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  line-height: 1;
 }
-@media (max-width: 575px) {
-  .checkout-header .checkout-header-left-section {
-    width: auto;
+
+.checkout-logo-online {
+  color: rgb(25, 135, 84);
+}
+
+.checkout-logo-shop {
+  color: white;
+  background-color: rgb(25, 135, 84);
+  padding: 2px 4px;
+  border-radius: 2px;
+  margin-left: 2px;
+}
+
+/* Mobile responsive logo */
+@media (max-width: 600px) {
+  .checkout-logo-container {
+    gap: 2px;
+    margin-left: 0;
   }
+  
+  .checkout-shop-icon {
+    height: 22px;
+    width: 22px;
+  }
+  
+  .checkout-logo-text {
+    font-size: 16px;
+  }
+}
 
-  .checkout-header .logo {
+@media (max-width: 475px) {
+  .checkout-logo-text {
     display: none;
   }
-
-  .checkout-header .mobile-logo {
-    display: inline-block;
-    height: 26px;
-    width: auto;
-    max-width: 100%;
-    object-fit: contain;
+  
+  .checkout-logo-container {
+    gap: 0;
+  }
+  
+  .checkout-shop-icon {
+    height: 24px;
+    width: 24px;
   }
 }
 

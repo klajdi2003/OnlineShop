@@ -38,11 +38,13 @@ const Header = ({ cart = []}) => {
     <div className="header">
       <div className="left-section">
         <NavLink to="/" className="header-link">
-          <img className="logo" src="images/logo-white.png" />
-          <img
-            className="mobile-logo"
-            src="images/mobile-logo-white.png"
-          />
+          <div className="logo-container">
+            <img className="shop-icon" src="/shop-icon.svg" alt="Shop" />
+            <span className="logo-text">
+              <span className="logo-online">Online</span>
+              <span className="logo-shop">Shop</span>
+            </span>
+          </div>
         </NavLink>
       </div>
 
