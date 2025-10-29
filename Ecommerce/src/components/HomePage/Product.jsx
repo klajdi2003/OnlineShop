@@ -61,7 +61,7 @@ const Product = ({ product, loadCart }) => {
       <div className="product-spacer"></div>
 
       <div className={`added-to-cart ${addedToCart ? 'added-to-cart-visible' : ''}`}>
-        <img src={getBackendImageUrl('checkmark.svg')} alt="Checkmark" />
+        <img src="/checkmark.svg" alt="Checkmark" />
         Added
       </div>
 

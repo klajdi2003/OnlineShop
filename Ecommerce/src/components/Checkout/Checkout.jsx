@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import OrderSummary from "./OrderSummary";
 import PaymentSummary from "./PaymentSummary";
+import { getBackendImageUrl } from "../../utilities/images";
 import "../Checkout/Checkout-Header.css";
 import "../Checkout/Checkout.css";
 
@@ -53,14 +54,16 @@ const Checkout = ({ cart, loadCart }) => {
 
           <div className="checkout-header-middle-section">
             Checkout (
-            <Link className="return-to-home-link" to="/">
-              3 items
-            </Link>
+              <Link className="return-to-home-link" to="/">
+                {cart.length} {cart.length === 1 ? 'item' : 'items'}
+              </Link>
             )
           </div>
 
+
           <div className="checkout-header-right-section">
-            <img src="/images/icons/checkout-lock-icon.png" alt="Secure Checkout" />
+            <img src={getBackendImageUrl('images/icons/checkout-lock-icon.png')}
+                 alt="Secure Checkout" />
           </div>
         </div>
       </div>
