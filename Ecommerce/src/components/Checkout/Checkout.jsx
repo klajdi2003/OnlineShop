@@ -29,6 +29,8 @@ const Checkout = ({ cart, loadCart }) => {
     fetchPaymentSummary();
   }, [cart]);
 
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
     <>
       <title>Checkout</title>
@@ -55,11 +57,10 @@ const Checkout = ({ cart, loadCart }) => {
           <div className="checkout-header-middle-section">
             Checkout (
               <Link className="return-to-home-link" to="/">
-                {cart.length} {cart.length === 1 ? 'item' : 'items'}
+                {totalItems} {totalItems === 1 ? 'item' : 'items'}
               </Link>
             )
           </div>
-
 
           <div className="checkout-header-right-section">
             <img src={getBackendImageUrl('images/icons/checkout-lock-icon.png')}
