@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Header from "../Header/Header";
 import ProductsGrid from "./ProductsGrid";
+import { getBackendImageUrl } from "../../utilities/images";
 import "../HomePage/HomePage.css";
 
 const HomePage = ({ cart, loadCart }) => {
@@ -40,7 +41,7 @@ const HomePage = ({ cart, loadCart }) => {
       <Header cart={cart} />
 
       <div className="home-page">
-        <ProductsGrid products={filteredProducts} loadCart={loadCart} />
+        <ProductsGrid products={filteredProducts} loadCart={loadCart} getBackendImageUrl={getBackendImageUrl} />
       </div>
     </>
   );
