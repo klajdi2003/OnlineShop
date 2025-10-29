@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../../api/axios";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Header from "../Header/Header";
@@ -12,7 +12,7 @@ const HomePage = ({ cart, loadCart }) => {
 
   useEffect(() => {
     const getHomeData = async () => {
-      const response = await axios.get('/api/products')
+      const response = await api.get('/api/products')
       setProducts(response.data);
     };
 

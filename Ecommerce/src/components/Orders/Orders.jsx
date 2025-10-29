@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../../api/axios";
 import dayjs from "dayjs";
 import { useState, useEffect, Fragment } from "react";
 import Header from "../Header/Header";
@@ -10,7 +10,7 @@ const Orders = ({ cart, loadCart }) => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/orders?expand=products')
+    api.get('/api/orders?expand=products')
       .then((response) => {
         setOrders(response.data);
       })
@@ -18,7 +18,7 @@ const Orders = ({ cart, loadCart }) => {
 
   const buyAgain = async (product, quantity) => {
     try {
-      await axios.post('/api/cart-items', {
+      await api.post('/api/cart-items', {
         productId: product.id,
         quantity: quantity
       });

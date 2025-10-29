@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../../api/axios";
 import { formatMoney } from "../../utilities/money";
 
 const Product = ({ product, loadCart }) => {
@@ -7,7 +7,7 @@ const Product = ({ product, loadCart }) => {
   const [addedToCart, setAddedToCart] = useState(false);
 
   const addToCart = async () => {
-    await axios.post('api/cart-items', {
+    await api.post('api/cart-items', {
       productId: product.id,
       quantity
     });

@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../../api/axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import OrderSummary from "./OrderSummary";
@@ -12,7 +12,7 @@ const Checkout = ({ cart, loadCart }) => {
 
 useEffect(() => { // runs once
   const fetchCheckoutData = async () => {
-    let response = await axios.get("/api/delivery-options?expand=estimatedDeliveryTime");
+    let response = await api.get("/api/delivery-options?expand=estimatedDeliveryTime");
     setdeliveryOptions(response.data);
   };
 
@@ -22,7 +22,7 @@ useEffect(() => { // runs once
 
 useEffect(() => { // runs when cart changes
   const fetchPaymentSummary = async () => {
-    let response = await axios.get("/api/payment-summary");
+    let response = await api.get("/api/payment-summary");
     setpaymentSummary(response.data);
   };
 
