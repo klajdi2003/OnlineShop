@@ -1,6 +1,6 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import api from './api/axios'; // <- use the shared api instance
+import api from './api/axios';
 import HomePage from './components/HomePage/HomePage';
 import Checkout from './components/Checkout/Checkout';
 import Orders from './components/Orders/Orders';
@@ -11,12 +11,8 @@ const App = () => {
   const [cart, setCart] = useState([]);
 
   const loadCart = async () => {
-    try {
-      const response = await api.get('/api/cart-items?expand=product'); // <- use api here
-      setCart(response.data);
-    } catch (error) {
-      console.error("Failed to load cart:", error);
-    }
+    const response = await api.get('/api/cart-items?expand=product');
+    setCart(response.data);
   };
 
   useEffect(() => {
@@ -24,14 +20,12 @@ const App = () => {
   }, []);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<HomePage cart={cart} loadCart={loadCart} />} />
-        <Route path='checkout' element={<Checkout cart={cart} loadCart={loadCart} />} />
-        <Route path='orders' element={<Orders cart={cart} loadCart={loadCart} />} />
-        <Route path='tracking' element={<Tracking />} />
-      </Routes> 
-    </BrowserRouter>
+  <Routes>
+    <Route index element={<HomePage cart={cart} loadCart={loadCart} />} />
+    <Route path='checkout' element={<Checkout cart={cart} loadCart={loadCart} />} />
+    <Route path='orders' element={<Orders cart={cart} loadCart={loadCart} />} />
+    <Route path='tracking' element={<Tracking />} />
+  </Routes> 
   );  
 }
 
