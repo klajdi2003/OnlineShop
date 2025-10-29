@@ -26,7 +26,6 @@ const Product = ({ product, loadCart }) => {
     setQuantity(quantitySelected);
   };
   
-
   return (
     <>
       <div className="product-container">
@@ -45,7 +44,7 @@ const Product = ({ product, loadCart }) => {
         <div className="product-rating-container">
           <img
             className="product-rating-stars"
-            src={`/images/ratings/rating-${product.rating.stars * 10}.png`}
+            src={getBackendImageUrl(`images/ratings/rating-${product.rating.stars * 10}.png`)}
             alt={`${product.rating.stars} stars`}
           />
           <div className="product-rating-count link-primary">{product.rating.count}</div>

@@ -1,8 +1,9 @@
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { getBackendImageUrl } from '../../utilities/images';
 import '../Header/Header.css';
 
-const Header = ({ cart = []}) => {
+const Header = ({ cart = [] }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [searchQuery, setSearchQuery] = useState('');
@@ -48,10 +49,10 @@ const Header = ({ cart = []}) => {
         </div>
 
         <div className="middle-section">
-          <input 
-            className="search-bar" 
-            type="text" 
-            placeholder="Search" 
+          <input
+            className="search-bar"
+            type="text"
+            placeholder="Search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             onKeyPress={handleKeyPress}
@@ -59,7 +60,8 @@ const Header = ({ cart = []}) => {
           <button className="search-button" onClick={handleSearch}>
             <img
               className="search-icon"
-              src="/images/icons/search-icon.png"
+              src={getBackendImageUrl('images/icons/search-icon.png')}
+              alt="Search"
             />
           </button>
         </div>
@@ -69,7 +71,11 @@ const Header = ({ cart = []}) => {
             <span className="orders-text">Orders</span>
           </NavLink>
           <NavLink className="cart-link header-link" to="/checkout">
-            <img className="cart-icon" src="/images/icons/cart-icon.png" />
+            <img
+              className="cart-icon"
+              src={getBackendImageUrl('images/icons/cart-icon.png')}
+              alt="Cart"
+            />
             <div className="cart-quantity">{totalQuantity}</div>
             <div className="cart-text">Cart</div>
           </NavLink>
