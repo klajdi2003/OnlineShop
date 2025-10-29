@@ -7,7 +7,6 @@ const Header = ({ cart = []}) => {
   const location = useLocation();
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Get search query from URL on mount or when location changes
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const query = params.get('search') || '';
@@ -15,7 +14,6 @@ const Header = ({ cart = []}) => {
   }, [location]);
 
   let totalQuantity = 0;
-
   cart.forEach((cartItem) => {
     totalQuantity += cartItem.quantity;
   });
@@ -33,49 +31,50 @@ const Header = ({ cart = []}) => {
       handleSearch();
     }
   };
+
   return (
     <>
-    <div className="header">
-      <div className="left-section">
-        <NavLink to="/" className="header-link">
-          <div className="logo-container">
-            <img className="shop-icon" src="/shop-icon.svg" alt="Shop" />
-            <span className="logo-text">
-              <span className="logo-online">Online</span>
-              <span className="logo-shop">Shop</span>
-            </span>
-          </div>
-        </NavLink>
-      </div>
+      <div className="header">
+        <div className="left-section">
+          <NavLink to="/" className="header-link">
+            <div className="logo-container">
+              <img className="shop-icon" src="/shop-icon.svg" alt="Shop" />
+              <span className="logo-text">
+                <span className="logo-online">Online</span>
+                <span className="logo-shop">Shop</span>
+              </span>
+            </div>
+          </NavLink>
+        </div>
 
-      <div className="middle-section">
-        <input 
-          className="search-bar" 
-          type="text" 
-          placeholder="Search" 
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          onKeyPress={handleKeyPress}
-        />
-        <button className="search-button" onClick={handleSearch}>
-          <img
-            className="search-icon"
-            src="images/icons/search-icon.png"
+        <div className="middle-section">
+          <input 
+            className="search-bar" 
+            type="text" 
+            placeholder="Search" 
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyPress={handleKeyPress}
           />
-        </button>
-      </div>
+          <button className="search-button" onClick={handleSearch}>
+            <img
+              className="search-icon"
+              src="/images/icons/search-icon.png"
+            />
+          </button>
+        </div>
 
-      <div className="right-section">
-        <NavLink className="orders-link header-link" to="/orders">
-          <span className="orders-text">Orders</span>
-        </NavLink>
-        <NavLink className="cart-link header-link" to="/checkout">
-          <img className="cart-icon" src="images/icons/cart-icon.png" />
-          <div className="cart-quantity">{totalQuantity}</div>
-          <div className="cart-text">Cart</div>
-        </NavLink>
+        <div className="right-section">
+          <NavLink className="orders-link header-link" to="/orders">
+            <span className="orders-text">Orders</span>
+          </NavLink>
+          <NavLink className="cart-link header-link" to="/checkout">
+            <img className="cart-icon" src="/images/icons/cart-icon.png" />
+            <div className="cart-quantity">{totalQuantity}</div>
+            <div className="cart-text">Cart</div>
+          </NavLink>
+        </div>
       </div>
-    </div>
     </>
   );
 };

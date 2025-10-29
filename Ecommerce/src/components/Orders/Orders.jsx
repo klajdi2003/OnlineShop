@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import { useState, useEffect, Fragment } from "react";
 import Header from "../Header/Header";
 import { formatMoney } from "../../utilities/money";
+import { getBackendImageUrl } from "../../utilities/images";
 import "../Orders/Orders.css";
 
 const Orders = ({ cart, loadCart }) => {
@@ -65,7 +66,7 @@ const Orders = ({ cart, loadCart }) => {
                       <Fragment key={orderProduct.product.id}>
                         <div className="product-image-container">
                           <img
-                            src={orderProduct.product.image}
+                            src={getBackendImageUrl(orderProduct.product.image)}
                             alt={orderProduct.product.name}
                           />
                         </div>
@@ -86,7 +87,7 @@ const Orders = ({ cart, loadCart }) => {
                           >
                             <img
                               className="buy-again-icon"
-                              src="images/icons/buy-again.png"
+                              src="/images/icons/buy-again.png"
                               alt="Buy Again"
                             />
                             <span className="buy-again-message">Buy Again</span>

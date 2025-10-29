@@ -1,4 +1,5 @@
 import Header from "../Header/Header";
+import { getBackendImageUrl } from "../../utilities/images";
 import "../Tracking/Tracking.css";
 
 const Tracking = () => {
@@ -24,7 +25,8 @@ const Tracking = () => {
 
           <img
             className="product-image"
-            src="images/products/athletic-cotton-socks-6-pairs.jpg"
+            src={getBackendImageUrl("images/products/athletic-cotton-socks-6-pairs.jpg")}
+            alt="Black and Gray Athletic Cotton Socks - 6 Pairs"
           />
 
           <div className="progress-labels-container">
